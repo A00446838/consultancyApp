@@ -4,10 +4,10 @@
   "description": " Consultantcy App",
   "scripts": {
     "start": "node dist/server/app.js",
-    "dev": "concurrently \"webpack-dev-server --open --mode development\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
-    "devnetwork": "concurrently \"webpack-dev-server --host 0.0.0.0 --disable-host-check --open --mode development\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
-    "prod": "concurrently \"npm run build && tsc -p server && node dist/server/app.js\"",
-    "postinstall": "tsc -p server",
+    "dev": "concurrently \"webpack-dev-server --open --mode development\" \"nodemon ./server/app.js\" \"nodemon dist/server/app.js\"",
+    "devnetwork": "concurrently \"webpack-dev-server --host 0.0.0.0 --disable-host-check --open --mode development\" \"nodemon ./server/app.js\" \"nodemon dist/server/app.js\"",
+    "prod": "concurrently \"npm run build && nodemon ./server/app.js",
+    "postinstall": "nodemon ./server/app.js",
     "build": "webpack --config webpack.config.prod.js",
     "heroku-postbuild": "npm install && npm run build",
     "ui": "webpack-dev-server --open --mode development"
