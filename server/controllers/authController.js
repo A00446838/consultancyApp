@@ -27,7 +27,7 @@ const register = (req, res, next) => {
 }
 
 const login = (req, res, next) => {
-    var username = req.body.username
+    var username = req.body.email
     var password = req.body.password
 
     User.findOne({ email: username }).then(user => {
@@ -58,6 +58,7 @@ const login = (req, res, next) => {
                 res.json({ message: 'No user' })
         }
     }).catch(err => {
+        res.status(403);
         res.json({ message: 'Error!!!' })
     })
 

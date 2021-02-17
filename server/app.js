@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const userRoute = require('./routes/user')
 const authRoute = require('./routes/auth')
@@ -22,6 +23,7 @@ const app = new express()
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(cors())
 
 const PORT = process.env.PORT || 3000
 
