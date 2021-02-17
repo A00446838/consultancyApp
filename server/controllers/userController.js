@@ -51,6 +51,15 @@ const accept = (req, res, next) => {
 
 }
 
+const showConsultants = (req, res, next) => {
+    User.find({ userType: 'Consultant' }).then(response => {
+        res.json({ response })
+    }).catch(err => {
+        res.json(404)
+        res.json({ message: 'Error!!!' })
+    })
+}
+
 module.exports = {
-    register, ask, accept
+    register, ask, accept, showConsultants
 }
