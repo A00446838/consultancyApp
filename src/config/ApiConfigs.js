@@ -5,3 +5,4 @@ export const SIGN_UP = BASE_URL+"/register";
 export const APP_CONFIG = "/appconfig";
 export const STORE = "/store";
 export const USER = "/secure/user";
+export const GET_CONSULTANTS = "/secure/showConsultants";

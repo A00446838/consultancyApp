@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import { consultantType } from "../../constant/selectOptions";
+import { getConsultants } from "../../store/actions/UserProfileAction"
 
 export class Issue extends Component {
 
@@ -21,9 +22,9 @@ export class Issue extends Component {
     }
 
 
-    componentDidMount() {
-        console.log('PersonalInfo');
-    }
+    /* componentDidMount() {
+        console.log('Issues');
+    } */
 
     handleOnChange = field => evt => {
         let query = this.state.query;
@@ -34,9 +35,13 @@ export class Issue extends Component {
             query: query
         });
 
-        if(query && query.issueTitle && query.issue) {
-            this.setState({isSubmitDisabled : false})
+        if (query && query.issueTitle && query.issue) {
+            this.setState({ isSubmitDisabled: false })
         }
+    }
+
+    getConsultants = () => {
+        this.props.getConsultants()
     }
 
     submitQuery = () => {
@@ -128,6 +133,7 @@ export class Issue extends Component {
                                                 label="Consultancy Type"
                                                 fullWidth
                                                 onChange={this.handleOnChange('queryType')}
+                                                onClick={this.getConsultants}
                                                 value={query && query.queryType ? query.queryType : ''}
                                                 required
                                                 select
@@ -187,5 +193,18 @@ export class Issue extends Component {
 
 }
 
+function mapStateToProps(state) {
+    return {
+        consultants: state.userReducer.consultants
+    };
+}
 
-export default Issue;
+function mapDispatchToProps(dispatch) {
+    return {
+        getConsultants: () => dispatch(getConsultants())
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Issue);
+// export default Issue;

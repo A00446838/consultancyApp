@@ -10,7 +10,7 @@ const setupInterceptors = () => {
         let userData = store.getState() && store.getState().loginReducer;
         let authToken = (userData && userData.loginSuccess && userData.loginSuccess.token) ? userData.loginSuccess.token : '';
         if (authToken) {
-            config.headers['authorization'] = authToken;
+            config.headers['authorization'] = 'Bearer ' + authToken;
         }
 
         return config;

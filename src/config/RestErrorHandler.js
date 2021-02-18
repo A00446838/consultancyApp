@@ -1,6 +1,5 @@
 const handleError = error => {
-    // console.log('Error fetching and parsing data', error);
-    //TODO: trigger some notification
+    console.log("Error: " + error)
 };
 
 export default handleError;

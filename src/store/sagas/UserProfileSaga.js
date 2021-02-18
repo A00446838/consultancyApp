@@ -1,6 +1,6 @@
-import {put, call, takeLatest } from 'redux-saga/effects';
+import { put, call, takeLatest, get } from 'redux-saga/effects';
 import ActionType from '../ActionType';
-import {updatePersonalInfoAPI} from '../services/UserProfileService';
+import { updatePersonalInfoAPI, getConsultantsAPI } from '../services/UserProfileService';
 import * as jwt from "jsonwebtoken";
 
 export function* updatePersonalInfo(...action) {
@@ -17,7 +17,7 @@ export function* updatePersonalInfo(...action) {
                 let updatedUser = {
                     "user": params
                 }
-                yield put({type: ActionType.LOGIN_USER, payload: updatedUser});
+                yield put({ type: ActionType.LOGIN_USER, payload: updatedUser });
                 onSuccess(result);
             }
         } else {
@@ -30,7 +30,19 @@ export function* updatePersonalInfo(...action) {
     }
 }
 
+export function* getConsultants(...action) {
+    const params = action[0].payload;
+    try {
+        const result = yield call(getConsultantsAPI);
+
+            yield put({ type: ActionType.GET_CONSULTANTS, payload: params })
+    } catch (err) {
+        console.log("Saga -> " + err);
+    }
+}
+
 
 export function* userProfileActionWatcher() {
     yield takeLatest(ActionType.SET_UPDATE_PERSONAL_INFO, updatePersonalInfo);
+    yield takeLatest(ActionType.GET_CONSULTANTS, getConsultants);
 }

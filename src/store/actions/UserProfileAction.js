@@ -7,3 +7,10 @@ export function updatePersonalInfo(...action) {
         payload: action
     }
 }
+
+export function getConsultants(...action) {
+    return {
+        type: ActionType.GET_CONSULTANTS,
+        payload: action
+    }
+}
