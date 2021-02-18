@@ -14,6 +14,7 @@ const register = (req, res, next) => {
             message: 'Please wait for the admin to authorize'
         })
     }).catch(err => {
+        res.status(500)
         res.json({ message: 'Error!!!' })
     })
 }
@@ -29,6 +30,7 @@ const ask = (req, res, next) => {
             message: 'Query submitted successfully'
         })
     }).catch(err => {
+        res.status(500)
         res.json({ message: 'Error!!!' })
     })
 }
@@ -42,20 +44,23 @@ const accept = (req, res, next) => {
                 res.json({message: 'Query accepted'})
             }
             else {
+                res.status(404)
                 res.json({message: 'Query not found'})
             }
         }
     ).catch(err => {
+        res.status(500)
         res.json({ message: 'Error!!!' })
     })
 
 }
 
 const showConsultants = (req, res, next) => {
-    User.find({ userType: 'Consultant' }).then(response => {
+    User.find({ userType: 'Consultant' }).select({'userType': 1, 'consultancyType': 1, 'name': 1,'email': 1})
+    .then(response => {
         res.json({ response })
     }).catch(err => {
-        res.json(404)
+        res.status(404)
         res.json({ message: 'Error!!!' })
     })
 }

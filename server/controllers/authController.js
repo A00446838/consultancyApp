@@ -19,6 +19,7 @@ const register = (req, res, next) => {
                 message: 'Await User Authorization from Admin'
             })
         }).catch(err => {
+            res.status(500)
             res.json({
                 message: 'Error!!!'
             })

@@ -31,11 +31,12 @@ export function* updatePersonalInfo(...action) {
 }
 
 export function* getConsultants(...action) {
-    const params = action[0].payload;
     try {
         const result = yield call(getConsultantsAPI);
 
-            yield put({ type: ActionType.GET_CONSULTANTS, payload: params })
+        if (result.status === 200) {
+            yield put({ type: ActionType.GET_CONSULTANTS, payload: {} })
+        }
     } catch (err) {
         console.log("Saga -> " + err);
     }
