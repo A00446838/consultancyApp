@@ -17,3 +17,11 @@ export const signUpApi = (params) => axios.post(SIGN_UP, params)
     .catch(error => {
         return error;
     });
+
+export const logOut = (params) => axios.post(LOGOUT, params)
+    .then(response => {
+        return response;
+    })
+    .catch(error => {
+        return error;
+    });

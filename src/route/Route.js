@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from "../container/Login/Login";
 import UserProfile from "../container/UserHomePage/UserHomePage";
 import Queries from "../container/Queries/Queries";
-// import withAuth from "./withAuth";
+import withAuth from "./withAuth";
 
 const Routes = () => (
     <Switch>
@@ -11,7 +11,7 @@ const Routes = () => (
             <Redirect to="/login" />
         </Route>
         <Route exact path="/login" name="login" component={Login} />
-        <Route exact path="/profile" name="profile" component={UserProfile} />
+        <Route exact component={withAuth(UserProfile)} path="/profile" name="profile"  />
     </Switch>
 );
 

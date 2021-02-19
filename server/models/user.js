@@ -12,7 +12,10 @@ const userSchema = new Schema({
         type: String
     },
     email: {
-        type: String
+        type: String,
+        lowercase: true,
+        unique: true,
+        required: true
     },
     password: {
         type: String
@@ -26,7 +29,7 @@ const userSchema = new Schema({
     isActive: {
         type: Boolean, default: false
     }
-}, {timestamps: true})
+}, { timestamps: true })
 
 const User = mongoose.model('User', userSchema)
 module.exports = User

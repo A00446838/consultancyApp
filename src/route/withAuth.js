@@ -9,24 +9,9 @@ export default function withAuth(ComponentToProtect) {
         }
 
         render() {
-            let loading = true;
-            let redirect = false;
-
             let User = store.getState() && store.getState().loginReducer;
-            /*if(User.loginSuccess && User.user.auth){
-                loading = false;
-            }else{
-                loading = false;
-                redirect = true;
-            }
-
-            if (loading) {
-                return null;
-            }
-            if (redirect) {
-
+            if (Object.keys(User.loginUser).length == 0)
                 return <Redirect to="/" />;
-            }*/
             return (
                 <React.Fragment>
                     <ComponentToProtect {...this.props} />

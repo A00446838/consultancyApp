@@ -44,8 +44,7 @@ export class Header extends Component {
         super(props);
         this.state = {
             isSignedIn: false,
-            userAuth: {},
-            anchorEl: null
+            userAuth: {}
         };
     }
 
@@ -55,7 +54,6 @@ export class Header extends Component {
     }
 
     logout = () => {
-        this.setState({ anchorEl: null });
         this.props.logout(this.onLogoutSuccess);
     }
 
@@ -63,20 +61,10 @@ export class Header extends Component {
         this.props.history.push('/');
     }
 
-    handleMenuClick = () => {
-        this.setState({ anchorEl: event.currentTarget });
-    }
-
-    handleMenuClose = () => {
-        this.setState({ anchorEl: null });
-    }
-
     render() {
 
         const { classes } = this.props;
 
-        const { anchorEl } = this.state;
-        const open = Boolean(this.state.anchorEl);
 
         let isSignedIn = this.props.loginSuccess && this.props.loginSuccess.hasOwnProperty('token');
 
@@ -109,29 +97,10 @@ export class Header extends Component {
                                                 >
                                                     <ExitToAppIcon />
                                                 </IconButton>
-                                                <Menu
-                                                    id="account-menu"
-                                                    anchorEl={anchorEl}
-                                                    getContentAnchorEl={null}
-                                                    keepMounted
-                                                    anchorOrigin={{
-                                                        vertical: 'top',
-                                                        horizontal: 'right',
-                                                    }}
-                                                    transformOrigin={{
-                                                        vertical: 'top',
-                                                        horizontal: 'right',
-                                                    }}
-                                                    open={open}
-                                                    onClose={this.handleMenuClose}
-                                                >
-                                                    <MenuItem onClick={this.logout}>Logout</MenuItem>
-                                                </Menu>
                                             </div>
                                         </div>
                                     </Grid>
                                 }
-
                             </Toolbar>
                         </AppBar>
                     </Grid>

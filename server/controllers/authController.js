@@ -39,7 +39,7 @@ const login = (req, res, next) => {
                     res.json({ error: err })
                 }
                 if (result) {
-                    let token = jwt.sign({ name: user.name }, 'consultancyAppSecret', { expiresIn: '1h' })
+                    let token = jwt.sign({ email: user.email }, 'consultancyAppSecret', { expiresIn: '1h' })
                     User.findOneAndUpdate({ email: username }, { $set: { activeToken: token } }).then().catch()
                     res.json({
                         message: 'Success Login',
@@ -66,6 +66,24 @@ const login = (req, res, next) => {
 
 }
 
+const logout = (req, res, next) => {
+    let email = req.body.username
+    User.findOneAndUpdate({ email: email }, { $set: { activeToken: '' } }).then(
+        response => {
+            if (response) {
+                res.json({ message: 'Log Out Successful' })
+            }
+            else {
+                res.status(404)
+                res.json({ message: 'User Not Found' })
+            }
+        }
+    ).catch(err => {
+        res.status(404)
+        res.json({ message: err })
+    })
+}
+
 module.exports = {
-    login, register
+    login, register, logout
 }
