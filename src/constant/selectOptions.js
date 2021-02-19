@@ -1,13 +1,3 @@
-export const cities = [
-    {
-        value: '',
-        label: 'Select city'
-    }, {
-        value: 'Pune',
-        label: 'Pune'
-    }
-];
-
 export const consultantType = [
     {
         value: '',

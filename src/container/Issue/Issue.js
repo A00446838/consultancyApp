@@ -23,11 +23,6 @@ export class Issue extends Component {
         };
     }
 
-
-    /* componentDidMount() {
-        console.log('Issues');
-    } */
-
     handleOnChange = field => evt => {
         let query = this.state.query;
 

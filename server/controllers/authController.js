@@ -54,14 +54,18 @@ const login = (req, res, next) => {
             })
         }
         else {
-            if (!user.isActive)
+            if (!user.isActive) {
+                res.status(403)
                 res.json({ message: 'User not active' })
-            else
+            }
+            else {
+                res.status(404)
                 res.json({ message: 'No user' })
+            }
         }
     }).catch(err => {
         res.status(403);
-        res.json({ message: 'Error!!!' })
+        res.json({ message: 'Invalid credentials' })
     })
 
 }

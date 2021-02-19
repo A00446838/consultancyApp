@@ -75,7 +75,7 @@ export class SignUp extends Component {
 
     showConsultantTypes = () => {
         let data = this.state.signUpData
-        if (data.registerAs == 2) {
+        if (data.userType === 'Consultant') {
             return (
                 <div>
                     <FormControl fullWidth>
@@ -89,9 +89,9 @@ export class SignUp extends Component {
                             <MenuItem value="">
                                 <em>None</em>
                             </MenuItem>
-                            <MenuItem value={1}>Education</MenuItem>
-                            <MenuItem value={2}>Career</MenuItem>
-                            <MenuItem value={3}>Immigration</MenuItem>
+                            <MenuItem value={'Education'}>Education</MenuItem>
+                            <MenuItem value={'Career'}>Career</MenuItem>
+                            <MenuItem value={'Immigration'}>Immigration</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
@@ -111,14 +111,14 @@ export class SignUp extends Component {
                         <Select
                             labelId="registerAs"
                             id="registerAsOpts"
-                            value={data && data.registerAs ? data.registerAs : ''}
-                            onChange={this.handleOnChange('registerAs')}
+                            value={data && data.userType ? data.userType : ''}
+                            onChange={this.handleOnChange('userType')}
                         >
                             <MenuItem value="">
                                 <em>None</em>
                             </MenuItem>
-                            <MenuItem value={1}>User</MenuItem>
-                            <MenuItem value={2}>Consultant</MenuItem>
+                            <MenuItem value={'User'}>User</MenuItem>
+                            <MenuItem value={'Consultant'}>Consultant</MenuItem>
                         </Select>
                     </FormControl>
 

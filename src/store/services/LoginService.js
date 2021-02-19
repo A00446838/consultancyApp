@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN, SIGN_UP } from "../../config/ApiConfigs";
+import { LOGIN, SIGN_UP, LOGOUT } from "../../config/ApiConfigs";
 
 export const getLogin = (params) => axios.post(LOGIN, params)
     .then(response => {

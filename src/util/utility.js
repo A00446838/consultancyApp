@@ -17,7 +17,7 @@ export function validatePhoneNumber(phonenumber) {
 }
 
 export function validatePassword(password) {
-    return (password && password.length === 6);
+    return (password && password.length >= 6);
 }
 
 export function isUser(role) {

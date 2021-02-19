@@ -97,7 +97,7 @@ export class Login extends Component {
     };
 
     onLoginFailure = (error) => {
-        this.showMessage('Invalid email or password', 'error');
+        this.showMessage(error.data.message, 'error');
     };
 
     openSignUp = () => {
@@ -123,7 +123,7 @@ export class Login extends Component {
                     closeModal={this.closeModal}
                     buttons={
                         <div>
-                            <Button variant="contained" color="primary" onClick={this.onSignUpSuccess}
+                            <Button variant="contained" color="primary" onClick={this.signUp}
                                 disabled={this.state.isSingUpDisabled}>
                                 Continue
                             </Button>
@@ -131,7 +131,7 @@ export class Login extends Component {
                     }
                 >
                     <SignUp
-                        signUp={this.onSignUpSuccess}
+                        signUp={this.signUp}
                         signUpData={this.state.signUpData}
                         enableDisableSignUp={this.enableDisableSignUp}
                     />
@@ -152,6 +152,7 @@ export class Login extends Component {
     }
 
     onSignUpSuccess = () => {
+        console.log(this.state.signUpData)
         this.closeModal();
         this.showMessage('You have been signed up successfully. Please wait for the admin to authorize', 'success');
     };
