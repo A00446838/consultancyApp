@@ -11,6 +11,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { consultantType } from "../../constant/selectOptions";
 import { getConsultants } from "../../store/actions/UserProfileAction"
 
+import './Issue.scss'
+
 export class Issue extends Component {
 
     constructor(props) {
@@ -164,10 +166,24 @@ export class Issue extends Component {
                             <CardActions>
                                 <Grid container spacing={2}>
 
-                                    <Grid item xs={6}>
+                                    <Grid item xs={2}>
                                         <Button variant="contained" color="primary" onClick={this.submitQuery}
                                             disabled={this.state.isSubmitDisabled}>
                                             Submit
+                                        </Button>
+
+                                    </Grid>
+                                    <Grid item xs={10}>
+                                        <Button
+                                            className="fr"
+                                            variant="contained"
+                                            component="label"
+                                        >
+                                            Upload File
+                                            <input
+                                                type="file"
+                                                hidden
+                                            />
                                         </Button>
                                     </Grid>
 
