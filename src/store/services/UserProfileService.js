@@ -1,5 +1,5 @@
 import axios from "axios";
-import {USER, GET_CONSULTANTS} from "../../config/ApiConfigs";
+import { USER, GET_CONSULTANTS } from "../../config/ApiConfigs";
 
 export const updatePersonalInfoAPI = (params) => axios.put(USER + '/' + params._id, params)
     .then(response => {
@@ -9,12 +9,12 @@ export const updatePersonalInfoAPI = (params) => axios.put(USER + '/' + params._
         return error;
     });
 
-export const getConsultantsAPI = () => {
+export const getConsultantsAPI = () =>
     axios.get(GET_CONSULTANTS).then(response => {
         return response
     })
-    .catch(err => {
-        return err
-    })
-}
+        .catch(err => {
+            return err
+        })
+
 

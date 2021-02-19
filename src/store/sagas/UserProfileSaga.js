@@ -34,8 +34,10 @@ export function* getConsultants(...action) {
     try {
         const result = yield call(getConsultantsAPI);
 
+        console.log(result)
+
         if (result.status === 200) {
-            yield put({ type: ActionType.GET_CONSULTANTS, payload: {} })
+                yield put({ type: ActionType.LOGIN_USER, payload: result.data.response });
         }
     } catch (err) {
         console.log("Saga -> " + err);

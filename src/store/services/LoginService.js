@@ -1,6 +1,5 @@
 import axios from "axios";
 import { LOGIN, SIGN_UP } from "../../config/ApiConfigs";
-//import handleError from "../../config/RestErrorhandler";
 
 export const getLogin = (params) => axios.post(LOGIN, params)
     .then(response => {
