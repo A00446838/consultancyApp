@@ -10,7 +10,6 @@ import Reports from "../Reports/Reports";
 import Issue from "../Issue/Issue";
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
-import {updatePersonalInfo} from "../../store/actions/UserProfileAction";
 import SnackBarComponent from "../../component/SnackBarComponent/SnackBarComponent";
 
 
@@ -122,7 +121,7 @@ export class UserHomePage extends Component {
                     </Tabs>
                 </AppBar>
                 <TabPanel  value={value} index={0}>
-                    <Issue query={this.state.query} updatePersonalInfo={this.props.updatePersonalInfo} showMessage={this.showMessage}/>
+                    <Issue query={this.state.query} showMessage={this.showMessage}/>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Queries/>
@@ -152,7 +151,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        updatePersonalInfo: (params, onUpdateSuccess, onUpdateFailure) => dispatch(updatePersonalInfo(params, onUpdateSuccess, onUpdateFailure)),
     }
 }
 

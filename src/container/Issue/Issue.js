@@ -45,18 +45,7 @@ export class Issue extends Component {
     }
 
     submitQuery = () => {
-
         let params = this.state.query;
-
-        this.props.updatePersonalInfo(params, this.onUpdateSuccess, this.onUpdateFailure)
-    }
-
-    onUpdateSuccess = (response) => {
-        this.props.showMessage('Personal information is updated successfully.', 'success');
-    }
-
-    onUpdateFailure = (error) => {
-        this.props.showMessage('Something went wrong! Please try again.', 'error');
     }
 
     showConsultancyList = () => {
@@ -207,4 +196,3 @@ function mapDispatchToProps(dispatch) {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Issue);
-// export default Issue;
