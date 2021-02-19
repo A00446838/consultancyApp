@@ -5,7 +5,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store/index';
 import setupInterceptors from "./config/RestInterceptor";
 import Header from "./component/Header/Header";
-import themeColors from './assets/jscss/colors';
 import './styles.scss';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
