@@ -84,11 +84,15 @@ export class Login extends Component {
     }
 
     login = () => {
+        this.setState({
+            isLoginDisabled: true
+        })
         this.props.login(this.state.loginData, this.onLoginSuccess, this.onLoginFailure);
     }
 
     onLoginSuccess = (response) => {
         this.setState({
+            isLoginDisabled: false,
             loginData: {}
         });
 
@@ -97,6 +101,9 @@ export class Login extends Component {
     };
 
     onLoginFailure = (error) => {
+        this.setState({
+            isLoginDisabled: false
+        })
         this.showMessage(error.data.message, 'error');
     };
 

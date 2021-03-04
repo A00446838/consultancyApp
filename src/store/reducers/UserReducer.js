@@ -6,7 +6,7 @@ const initialState = {
 
 export default function userReducer(state = initialState, action) {
     switch (action.type) {
-        case ActionType.GET_CONSULTANTS: {
+        case ActionType.SET_CONSULTANTS: {
             return { ...state, consultants: action.payload};
         }
 
